@@ -1,0 +1,406 @@
+WorldSkills Connect - Specification
+====================
+
+Overview
+--------------
+
+WorldSkills Connect (WSConnect) is simply a platform that allows users attending or following an event, to find others that share a common interest and connect with them.
+
+Users will be able to register to the system, and fill in their personal profile and interests. They will also need to opt-in to a specific WorldSkills Event in order to be found by other users. WSConnect will then help them to search and view other profiles, and send them personalized recommendations of other users with similar interests, attending to the same event.
+
+WSConnect only helps facilitate connections and makes it easy for users to share their contact information with each other securely. After the connection has been made, what happens after that, is outside the scope of the system and in the hands of the users.
+
+WSConnect will also allow groups such as Global Industry Partners and Event Sponsors to search for people with custom interest, location and other filters, and send out connect requests / event requests a targeted group of users. It is still always up to the individual user to accept and act on these requests.
+
+Once the user has registered to WSConnect, the system will keep their profile from event to another. They won’t however be found via the search in the future events, unless they have opted in to the specific event.
+
+No user information will ever be given out unless the user accepts the connection.
+
+
+Target users
+--------------
+WSConnect is a platform that everyone can use. It is not limited to internal WorldSkills people such as Delegates, Experts or Global Industry Partners, but for everyone interested WorldSkills and related topics.
+
+Because of this, WSConnect needs to be advertised widely, both inside and outside WorldSkills, in order to be successful.
+
+Functionality and Requirements
+=======================
+Platform and source control
+---------------
+The system will be built on LAMP platform and will be running on WorldSkills International servers.
+The system will use a PHP framework, most likely Symfony.
+
+Front-end techniques should include
+
+- HTML5
+- CSS3
+- Compass / SASS
+- jQuery & jQuery UI
+- Modernizr
+- Respond
+
+The design will be responsive and the application should work fully with mobile browsers on phones and tablets.
+
+The code will be managed under a GIT repository at GITHUB (http://github.com)
+
+Functionality overview
+----------------
+- Simple registration with WorldSkills, Facebook, LinkedIn, Twitter and Google authentication.
+> Wheres WorldSkills authentication API
+- Customizable user profile with privacy settings
+- Customizable interests
+- Event list with opt-in possibility
+- User profile search
+- “People of interest” view of users with similar interests
+- “Will you be there?”
+- Emailing of Connect Requests and People of Interest
+- Sharing of contact details
+- Events for Sponsors
+- List of Connect Requests page
+- Social share – “Join WorldSkills Connect to …”
+- Social Check – Who of the people I know are going to this event
+    - Tied with invite your friends to WorldSkills Connect
+- Administration panel
+- Help functionality to get users started
+- Localization
+
+Registration
+-----------------
+Registrations to the system should be as simple as possible and ask as little of details about the user as possible. The user can then later decide how much information they want to put in.
+
+The mandatory fields on registration should be
+
+- *First name 
+- *Last name
+- Company
+- Position
+- *Email address (used as username)
+- *Password
+- *I agree to terms of use (Checkbox)
+
+*** Required
+
+After the registration, the system needs to be able to motivate the user to fill in more information. 
+This can be achieved by
+
+- Showing a percentage of completeness
+- Telling them that we can help them better to find people to connect with, and help other people to find them better, if they fill in more information about themselves and their interests.
+
+Email address must be confirmed via email confirmation in case of every type of registration.
+
+Social Registration
+-------------------
+Registration to WorldSkills Connect should be also possible using existing social networks, such as
+
+- Facebook
+- Twitter
+- Google+
+- LinkedIn
+
+The system needs to provide the ability to allow the user to register via the network of their choice. This option should be more visible than the manual registration as it is the preferred method.
+
+When the user register via one of the social networks, we grab the essential user information needed to the registration, as well as their profile picture and store it inside the WSConnect application.
+
+Registration for existing WorldSkills International users
+--------------------
+Many of our users already have an existing WSI account, and our goal is to make registering easier for them.
+
+At the login / registration screen where the social network login buttons are, there should be an extra possibility to register using the WSI login. After entering their WSI username and password, the system will then pull in the essential user information needed to complete the registration, including the profile picture, which will be copied over to the WSConnect. During this process WSConnect notifies WSI system that a connect user has been copied so the two accounts can be linked together.
+
+The API to query user data from WorldSkills International systems will be provided by WSI, as well as the API to let WSI know the user has been copied over.
+
+To be clear, the user profile will be copied over to WSConnect, it won’t be in synchronization after this.
+This is a one-time event per user.
+
+What if a Connect user becomes a Competitor or Expert etc on WSC?
+Link to Who/is/who, not everyone can say they are a competitor/expert, auth by WIW.
+Copy of the profile, or synchronization both ways.
+
+What about regional systems? API to bring in information from nationals?
+
+Event List
+---------------------
+WorldSkills Connect should be an Event based, after a user has registered, the next step is to opt-in into an event. The user can only search people that have opted into an event, and can only be found by other users that have opted into the same event. ***It is not possible to search users cross-events***. The opt-in can happen automatically provided that they followed a specific link.
+
+When the user opts in to an event, the system should also ask the user if they are going to physically attend the event, and if so, on which dates. This information can be used in the matching process and shown in their profile page if they wish so.
+
+The event contains
+
+- Event name
+- Description
+- Start date
+- End date
+- Organizer account
+
+The event information such as description and dates can be modified by the user account marked as the organizer of the ev ent.
+
+Users cannot themselves create events, all events must be managed via the “super admin” panel, and assigning of organizers to the events must happen via the same panel.
+
+WorldSkills Connect can also suggest future events to the users upon login and via email.
+
+Events might have different lists of events?
+
+User profile
+----------------------
+The users should all have a personalized WorldSkills Connect profile page, with the following information:
+
+- Profile picture
+- Title
+- First name
+- Last name
+- Description
+- Date of Birth
+- Gender
+- Company (incl website)
+- Title in Company
+- Email address(es) (one primary that serves as login)
+- Phone number
+- Address line 1
+- Address line 2
+- City
+- Zip Code
+- Country
+- Social networks via API authentication request
+    - Facebook
+    - LinkedIn
+    - Twitter
+    - Google+
+- Web address - blog
+- Skype address
+
+Only the email field is mandatory, as the primary one serves also as the username. The user can add in as many email addresses as they like, but it is not possible to modify the primary one. It is possible to switch another email to the primary one, in which case also the username changes, this must be however confirmed with an email confirmation to make sure the address is correct and belongs to the user.
+
+The profile should also show people who the user is connected with already.
+
+Link with WSI profile, show history inside WSI / Regionals.
+Download user’s information as a vCard
+
+
+Customizable Interests
+---------------------
+The user must be able to select and fill in a custom set of interests, which will later on be used in order to match them with other people. The complete list of these interests is still to be defined.
+
+The list should be specific to an event, perhaps have a core group of interests shared among all events.
+What happens after event, will the users stay opted in, can they still be connected in that event?
+
+
+Privacy Settings
+---------------------
+WSConnect should respect the privacy of the users. The user should be able to select per field, who their information will be shown to. Possible settings are:
+
+Public to everyone – NO PUBLIC VIEW
+Only registered users
+Only to people I have Connected with (similar to friends in facebook etc)
+Only for search and matching purposes (private)
+
+The first name and last name fields will always be visible as they are shown in the search results.
+The users cannot be shown in the search unless both of the fields have been filled in.
+
+
+
+User profile search
+---------------------
+An ability to search other users using a custom set of search criteria.
+
+Simple search
+There should be a search field on every page of the system, most likely in the top-right corner. This search should show the results similar to the way Facebook shows them, with profile pictures. Search fields in this search should contain:
+
+- First name
+- Last name
+- Email address
+- City
+- Country
+- Company
+
+
+Advanced search
+---------------------
+The advanced search should be a page where the user can search with a variety of search criteria.
+The actions next to each search result should be “view profile” and “send connect request”.
+
+The search criteria on this page is still to be defined, but most likely it will contain all the possible user profile fields and interests.
+
+“People of interest” view of users with similar interests
+There should be a possibility to generate a list of top-matches for the user. This list could be shown on the side on every page of the system. If it is not yet possible to match the user because of limited information in their profile, the box should contain a message motivating them to enter more information and contain a link to edit their interests and profile information.
+
+
+Emailing
+----------------------
+The system should be able to send pretty HTML emails to the users.
+The emailing is automated and never sent directly by a user.
+
+The automated email messages include
+
+- Email confirmation
+- Profile confirmation
+- Password recovery
+- People of Interest emails
+- Connect Requests
+- Connect Confirmation
+- Event Requests
+- Upcoming Events
+- Other?
+
+
+Email confirmation
+-----------------------
+To confirm that the email the user added is really correct and belongs to the user. Only done at registration and after changing the primary email address of the user.
+
+Profile confirmation
+------------------------
+An email congratulating the user on creating a profile, and instructions on how to progress further.
+Email should motivate the person to add more details so that they can be matched better.
+
+Scheduled messages, “we are missing you”.
+Lurkers? Only find information?
+
+Password recovery
+-------------------------
+In case the user has forgotten their password, an email sent to their primary email address with a link to reset their password.
+
+People of Interest emails
+-------------------------
+An email containing possible matches to the user, this could be either done when new matches are found, or as a digest once a week. Depending on the users’ choice.
+
+Don’t email same people over and over again.
+Remember who has been suggested already.
+
+Connect Requests
+-------------------------]]
+Email sent to the user when someone else wants to connect with them. This email will contain information about the user wanting to connect, their personal message (optional) and a link to accept / deny the connection request.
+
+The accept/deny link should be an auto-authenticate link so the user doesn’t need to login again to accept the request, simple click should be enough. This needs to be secure though, no usernames or passwords in the email links.
+
+The user should be able to configure when they want to receive these emails. Emails can be received either instantly when a request occurs, or as digests. The user needs to be able to select how often they receive their digests, on which day, and what time of the day.
+
+Connect Confirmation
+-------------------------
+Once a connection has been made, both users will be sent an email message telling them that a connection has been made successfully.
+
+The email should also contain:
+
+A link to the connected user’s profile on WorldSkills Connect, with auto-authenticate so they don’t need to login separately.
+The contact information the user has specified to be shared with the connected person, and any public information of the user
+A vCard format contact card attachment, so they can easily add the contact to their address book.
+
+Special Event Requests
+-------------------------
+Event requests are only sent by a limited group of people, mainly sponsors. Event request email will contain information about the person sending the request, information about the possible event, and an RSVP/Connect button. 
+
+This button to accept / deny should auto-authenticate similar to the connect requests.
+
+Upcoming Events
+-------------------------
+An email informing the user that new events have been added to WorldSkills Connect. This email should include the name, description and dates of the event, as well as an opt-in / subscribe button.
+
+This button should auto-authenticate similar to the other email buttons, and add the user into the event specified.
+
+
+Sharing of contact details
+-------------------------
+Contact details of the users will mainly be shared via email, after a connect request has been accepted.
+
+The contact details will only be visible on the user’s profile page to other users they have already connected with, this is the default setting in privacy. It is also possible that the user configures their privacy so that the details can be shown to everyone without a connect request.
+
+
+Events for Sponsors (better name to be defined later)
+-------------------------
+If a user account has been confirmed as a “sponsor” account, they will have an extra possibility to create events and mass-invite people to their event.
+
+When an event is created, the system should ask for basic information of the event:
+
+- Name of the event
+- Organizer
+- Description
+- Place (textfield with address)
+- Event photo
+- Date
+- Time
+
+After this, the user needs to be able to select the people to invite to the event. This should be done using the built-in search. They should not be able to automatically select everyone in the database; every person should be handpicked in order to avoid spamming the users.
+
+Once the invitees have been selected, they will be shown a preview of the invitation email that will be sent to the users, and either modify, or send the invite.
+
+When the invite is sent the system also creates an event page, which will only be visible to the creator of the event, and the invitees. There should be no public access to this page at all. The invitees should be able to accept or deny the event request on this page. This page should also have a box showing all the attendees who have accepted the request. The ones still pending on answer or have denied the request, should not be shown at all.
+
+When a user accepts the event request, either via the event page, or the email sent to them, the user’s contact details will be sent, and made visible to the creator of the event. 
+
+
+List of Connect Requests page
+-------------------------
+The system should have a notification inbox (similar to LinkedIn), where they could view and accept/deny all incoming connect requests and event requests. There will not be any functionality to message other users, as this should happen via other platforms once a connect request has been made and accepted.
+
+
+Social share – “Join WorldSkills Connect to …”
+-------------------------
+The system should be integrated with social networks and it should be possible for them to share their profiles to the social networks.
+
+The system should also have a way for the user to check their existing social networks for users who are already using WorldSkills Connect. This can be tied into an invite system where they can easily invite their friends who are not yet using WSConnect, but might want to.
+
+Administration panel
+-------------------------
+There should be two separate administration panels, one for the super admin, and one for event administrators.
+
+Super Administrator Panel
+-------------------------
+The super administrator panel should have the following functionality
+
+- List all user accounts
+    - With search
+        - Firstname
+        - Lastname
+        - Sponsor (yes/no)
+        - Event organizer (yes/no)
+        - Event subscribed
+        - Country
+        - City
+        - Organization
+        - Email address
+    - Edit account
+    - Delete account
+- List all events
+    - Create event
+    - Edit event
+        - Assign / remove organizer
+        - Assign / remove sponsors
+    - Delete event
+- List all sponsor events
+    - Edit sponsor event
+    - Delete sponsor event
+
+Event Administrator Panel
+-------------------------
+The event administrator should only be able to view and edit information inside the event they are an organizer for.
+
+The administrator panel for event organizers should contain the following functionality
+
+- List all user accounts in event
+    - With search
+        - Same fields as super administrator panel
+    - No edit or delete account rights
+- List all sponsor events within own event
+    - Edit sponsor event
+    - Delete sponsor event
+    - Invite sponsors via email
+- Edit event
+    - Assign / remove event sponsors
+    - Edit event information
+
+**Important!** All sponsor statuses are specific to an event.
+
+
+Help functionality to get users started
+-------------------------
+This functionality is still to be defined, but something to help users get around the site and tell them where to look and what to do once they are logged in.
+
+Example tools for this:
+
+- [tympanus](http://tympanus.net/Development/WebsiteTour/)
+- [bootstrap-tour](https://github.com/Gild/bootstrap-tour)
+- [jquery joyride](http://www.zurb.com/playground/jquery-joyride-feature-tour-plugin)
+
+Localization
+-------------------------
+The application will be available in multiple languages (EN, DE, BR, etc), this should be taken into account in early stages of development, to allow easy localization for any number of languages.
+
+The localization should be built in a way, that it’s easy to send the language file(s) to be translated by anyone without any programming knowledge. The localization should allow fallback to the default language (English), so that if there is any text that is missing from the language files, it will show in the default language rather than empty field.

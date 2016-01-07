@@ -5,7 +5,7 @@ WorldSkills APP
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-##Table of Contents
+##Conteudo
 
 - [WorldSkills APP](#worldskills-app)
   - [API](#api)
@@ -16,16 +16,9 @@ WorldSkills APP
 
 API
 ----------------
-You can check the full API here
+Você encontra a API completa aqui
 
 [http://docs.wsapp.apiary.io/](http://docs.wsapp.apiary.io/)
-
-
-### Mock Server
-For testing purposes you can require informations using the following URL
-
-[http://private-d860c-wsapp.apiary-mock.com](http://private-d860c-wsapp.apiary-mock.com)
-
 
 
 ##Utilities
